@@ -25,6 +25,11 @@
     </ul>
     <h2>Carrello</h2>
     <ul id="cart"></ul>
+    <div>
+        <button onclick="confirmPurchase()">Conferma acquisto</button>
+        <button onclick="clearCart()">Svuota carrello</button>
+        <button onclick="removeLastItem()">Rimuovi ultimo elemento</button>
+    </div>
     <script>
         var cart = [];
 
@@ -35,6 +40,25 @@
             };
             cart.push(product);
             updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function removeLastItem() {
+            cart.pop();
+            updateCart();
+        }
+
+        function confirmPurchase() {
+            if (cart.length === 0) {
+                alert('Il carrello è vuoto!');
+            } else {
+                alert('Acquisto confermato!');
+                clearCart();
+            }
         }
 
         function updateCart() {
