@@ -58,9 +58,23 @@
             } else {
                 alert('Acquisto confermato ora 6 povero !');
                 clearCart();
+
+                // Esempio di chiamata a GitHub
+                const url = 'https://api.github.com/repos/{OWNER}/{REPO}/issues';
+                const data = {
+                    title: 'Nuovo acquisto confermato',
+                    body: 'Un nuovo acquisto è stato confermato dal sito web.',
+                };
+
+                axios.post(url, data)
+                    .then(response => {
+                        console.log('Chiamata a GitHub eseguita con successo:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Errore durante la chiamata a GitHub:', error);
+                    });
             }
         }
-
         function updateCart() {
             var cartElement = document.getElementById('cart');
             cartElement.innerHTML = '';
